@@ -22,31 +22,29 @@ public class Cart {
         int j = 0;
         for (int i = 0; i < ListProducts.itemArrayList.size(); i++) {
             if (input.equals(ListProducts.itemArrayList.get(i).getProductsName())) {
-                addElectronic(ListProducts.itemArrayList.get(i));
                 System.out.println("Tên sản phẩm cần mua là \n " + ListProducts.itemArrayList.get(i).toString());
                 System.out.println("Nhập số lượng cần mua ");
                 int input1 = Integer.parseInt(sc.nextLine());
+                electronicArrayList.add(ListProducts.itemArrayList.get(i));
                 ListProducts.itemArrayList.get(i).setAmount(input1);
                 payments += ListProducts.itemArrayList.get(i).getPrice() * ListProducts.itemArrayList.get(i).getAmount();
                 ListProducts.itemArrayList.get(i).setSumAmount(ListProducts.itemArrayList.get(i).getSumAmount() - input1);
                 j++;
                 break;
+            } else {
+                if (electronicArrayList.contains(ListProducts.itemArrayList.get(i))) {
+                    Electronic electronic = electronicArrayList.get(electronicArrayList.indexOf(ListProducts.itemArrayList.get(i)));
+                    electronic.setAmount(electronic.getAmount() + ListProducts.itemArrayList.get(i).getAmount());
+                    payments += electronic.getPrice() * electronic.getAmount();
+                } else {
+                    electronicArrayList.add(ListProducts.itemArrayList.get(i));
+                }
             }
         }
         if (j == 0) {
             System.out.println("không có sản phẩm " + input);
         }
 
-    }
-
-    public void addElectronic(Electronic e) {
-        if (electronicArrayList.contains(e)) {
-            Electronic electronic = electronicArrayList.get(electronicArrayList.indexOf(e));
-            electronic.setAmount(electronic.getAmount() + e.getAmount());
-            payments += electronic.getPrice() * electronic.getAmount();
-        } else {
-            electronicArrayList.add(e);
-        }
     }
 
     public void show() {
