@@ -2,14 +2,12 @@ package model;
 
 public class Electronic extends Item {
     private String productCode;
-    private int amount;
     private int sumAmount;
 
     public Electronic() {}
 
     public Electronic(String productCode, int amount) {
         this.productCode = productCode;
-        this.amount = amount;
     }
 
 
@@ -28,13 +26,6 @@ public class Electronic extends Item {
         this.productCode = productCode;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 
     public int getSumAmount() {
         return sumAmount;

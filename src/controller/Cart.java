@@ -9,6 +9,7 @@ public class Cart {
     Scanner sc = new Scanner(System.in);
     private ArrayList<Electronic> electronicArrayList;
     private static double payments;
+    private static double amount;
 
 
     public Cart() {
@@ -19,29 +20,29 @@ public class Cart {
     public void addToCart() {
         System.out.println("Nhập tên sản phẩm cần mua ");
         String input = sc.nextLine();
-        int j = 0;
+        int index = 0;
         for (int i = 0; i < ListProducts.itemArrayList.size(); i++) {
             if (input.equals(ListProducts.itemArrayList.get(i).getProductsName())) {
                 System.out.println("Tên sản phẩm cần mua là \n " + ListProducts.itemArrayList.get(i).toString());
                 System.out.println("Nhập số lượng cần mua ");
                 int input1 = Integer.parseInt(sc.nextLine());
-                electronicArrayList.add(ListProducts.itemArrayList.get(i));
-                ListProducts.itemArrayList.get(i).setAmount(input1);
-                payments += ListProducts.itemArrayList.get(i).getPrice() * ListProducts.itemArrayList.get(i).getAmount();
-                ListProducts.itemArrayList.get(i).setSumAmount(ListProducts.itemArrayList.get(i).getSumAmount() - input1);
-                j++;
-                break;
-            } else {
                 if (electronicArrayList.contains(ListProducts.itemArrayList.get(i))) {
                     Electronic electronic = electronicArrayList.get(electronicArrayList.indexOf(ListProducts.itemArrayList.get(i)));
-                    electronic.setAmount(electronic.getAmount() + ListProducts.itemArrayList.get(i).getAmount());
-                    payments += electronic.getPrice() * electronic.getAmount();
+                    amount += input1;
+                    payments = electronic.getPrice() * amount;
+                    index++;
                 } else {
                     electronicArrayList.add(ListProducts.itemArrayList.get(i));
+                    amount += input1;
+                    payments += ListProducts.itemArrayList.get(i).getPrice() * amount;
+                    ListProducts.itemArrayList.get(i).setSumAmount(ListProducts.itemArrayList.get(i).getSumAmount() - input1);
+                    index++;
+
                 }
+
             }
         }
-        if (j == 0) {
+        if (index == 0) {
             System.out.println("không có sản phẩm " + input);
         }
 
@@ -49,9 +50,20 @@ public class Cart {
 
     public void show() {
         for (Electronic e : electronicArrayList) {
-            System.out.println(e.toString() + "\n" + "Tổng số tiền " + payments + "\n");
+            System.out.println(e.toString() + "\n" + "số lượng mua " + amount + "\n" + "Tổng số tiền " + payments + "\n");
         }
     }
+
+    public void addProducts(Electronic e) {
+        if (electronicArrayList.contains(e)) {
+            Electronic electronic = electronicArrayList.get(electronicArrayList.indexOf(e));
+            amount += amount;
+            payments += electronic.getPrice() * amount;
+        } else {
+            electronicArrayList.add(e);
+        }
+    }
+
 
     public ArrayList<Electronic> getElectronicArrayList() {
         return electronicArrayList;
