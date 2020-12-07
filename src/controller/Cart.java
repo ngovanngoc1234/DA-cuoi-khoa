@@ -1,13 +1,14 @@
 package controller;
 
-import model.Electronic;
+import model.Client;
+import model.Products;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cart {
     Scanner sc = new Scanner(System.in);
-    private ArrayList<Electronic> electronicArrayList;
+    private ArrayList<Products> electronicArrayList;
     private static double sumPayments;
 
 
@@ -28,7 +29,7 @@ public class Cart {
                 int input1 = Integer.parseInt(sc.nextLine());
                 if (ListProducts.itemArrayList.get(i).getSumAmount() >= input1) {
                     if (electronicArrayList.contains(ListProducts.itemArrayList.get(i))) {
-                        Electronic electronic = electronicArrayList.get(electronicArrayList.indexOf(ListProducts.itemArrayList.get(i)));
+                        Products electronic = electronicArrayList.get(electronicArrayList.indexOf(ListProducts.itemArrayList.get(i)));
                         input1 += electronic.getAmount();
                         electronic.setAmount(input1);
                         sum = (electronic.getPrice() * electronic.getAmount()) - electronic.getPayments();
@@ -47,7 +48,18 @@ public class Cart {
                 } else {
                     System.out.println("Trong kho còn  ^.^ " + ListProducts.itemArrayList.get(i).getSumAmount());
                 }
-
+                Client client = new Client();
+                System.out.println("Mời nhập thông tin cá nhân ");
+                System.out.println("Họ Tên ");
+                String name = sc.nextLine();
+                client.setName(name);
+                System.out.println("Nhâp Số Điện Thoại ");
+                String phone = sc.nextLine();
+                client.setNumberPhone(phone);
+                System.out.println("Nhập Địa chỉ ");
+                String address = sc.nextLine();
+                client.setAddress(address);
+                ListProducts.itemArrayList.get(i).setClient(client);
             }
         }
         if (index == 0) {
@@ -56,14 +68,18 @@ public class Cart {
     }
 
     public void show() {
-        for (Electronic e : electronicArrayList) {
-            System.out.println(e.toString() + "\n" + "số lượng mua " + e.getAmount() + "\n");
+        for (Products e : electronicArrayList) {
+            System.out.println(e.toString() + "\n" + "số lượng mua " + e.getAmount());
+            System.out.println("Thông tin khách hàng");
+            System.out.println("Tên Khách hàng : " + e.getClient().getName());
+            System.out.println("Số điện thoại khách : " + e.getClient().getNumberPhone());
+            System.out.println("Địa chỉ chỉ khách  : " + e.getClient().getAddress());
         }
-        System.out.println("Tổng số tiền " + sumPayments + "\n");
+        System.out.println("\nTổng số tiền " + sumPayments + "\n");
     }
 
 
-    public ArrayList<Electronic> getElectronicArrayList() {
+    public ArrayList<Products> getElectronicArrayList() {
         return electronicArrayList;
     }
 }

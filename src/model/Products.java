@@ -1,10 +1,19 @@
 package model;
 
-public class Electronic extends Item {
+public class Products extends Item {
     private String productCode;
     private int sumAmount;
     private int amount;
     private double payments;
+    Client client;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
     public double getPayments() {
         return payments;
@@ -14,13 +23,15 @@ public class Electronic extends Item {
         this.payments = payments;
     }
 
-    public Electronic() {}
+    public Products() {
+    }
 
-    public Electronic(String productCode, int sumAmount, int amount,double payments) {
+    public Products(String productCode, int sumAmount, int amount, double payments, Client client) {
         this.productCode = productCode;
         this.sumAmount = sumAmount;
         this.amount = amount;
         this.payments = payments;
+        this.client = client;
     }
 
     public int getAmount() {
@@ -57,11 +68,11 @@ public class Electronic extends Item {
 
     @Override
     public String toString() {
-        return "Thông tin sản phẩm " + "\n"+
+        return "Thông tin sản phẩm " + "\n" +
                 "Mã sản phẩm " + getProductCode() +
                 "  Tên sản phẩm " + getProductsName() +
-                "  Nhà sản xuất "+ getProducer() +
-                "  Giá sảm phẩm " + getPrice() ;
+                "  Nhà sản xuất " + getProducer() +
+                "  Giá sảm phẩm " + getPrice();
 
     }
 }
