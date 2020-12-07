@@ -119,11 +119,11 @@ public class ListProducts {
 
 
     public void sortByPrice() {
-        System.out.println("Gia duoc sap xep la");
-        getItemArrayList().sort(new SortProductsPrice());
-        for (Products e : itemArrayList) {
-            System.out.println(e.toString());
+        itemArrayList.sort(new SortByPrice());
+        for (int i = 0; i < itemArrayList.size(); i++) {
+            System.out.println("Sản phẩm được sắp xếp theo giá "+itemArrayList.get(i).toString());
         }
+
     }
 
 

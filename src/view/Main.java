@@ -35,12 +35,12 @@ public class Main {
                                 System.out.println("4: xem hóa đơn sản phẩm ");
                                 System.out.println("5: Đánh giá góp ý");
                                 System.out.println("6: Thoát");
+                                listProducts.showProducts();
                                 try {
                                     n = Integer.parseInt(sc.nextLine());
-                                    ListProducts.showProducts();
                                     switch (n) {
                                         case 1 -> listProducts.searchProducts();
-                                        case 2 -> listProducts.sortByPrice();
+                                        case 2 -> listProducts.showProducts();
                                         case 3 -> cart.addToCart();
                                         case 4 -> cart.show();
                                         case 5 -> Comments.comments();
@@ -59,14 +59,14 @@ public class Main {
                                 System.out.println("4: sắp xếp giá sản phẩm ");
                                 System.out.println("5: Quản lý thông tin người dùng ");
                                 System.out.println("6: Thông tin đánh giá của người dùng ");
-                                System.out.println("7 Thoát");
+                                System.out.println("7: Thoát");
                                 try {
                                     n = Integer.parseInt(sc.nextLine());
                                     switch (n) {
                                         case 1 -> listProducts.addProducts();
                                         case 2 -> listProducts.searchProducts();
                                         case 3 -> listProducts.editWare();
-                                        case 4 -> listProducts.sortByPrice();
+                                        case 4 -> listProducts.showProducts();
                                         case 5 -> {
                                             int number = 0;
                                             do {
