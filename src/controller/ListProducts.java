@@ -54,23 +54,27 @@ public class ListProducts {
                     System.out.println("1:Them so luong san pham");
                     System.out.println("2:chinh gia san pham");
                     System.out.println("3:thoat");
-                    index = Integer.parseInt(sc.nextLine());
-                    switch (index) {
-                        case 1 -> {
-                            System.out.println("nhap so luong can them ");
-                            int sl = Integer.parseInt(sc.nextLine());
-                            int sum = electronic.getSumAmount();
-                            sum += sl;
-                            electronic.setSumAmount(sum);
-                            System.out.println("so luong sau khi them = " + electronic.getSumAmount());
+                    try {
+                        index = Integer.parseInt(sc.nextLine());
+                        switch (index) {
+                            case 1 -> {
+                                System.out.println("nhap so luong can them ");
+                                int sl = Integer.parseInt(sc.nextLine());
+                                int sum = electronic.getSumAmount();
+                                sum += sl;
+                                electronic.setSumAmount(sum);
+                                System.out.println("so luong sau khi them = " + electronic.getSumAmount());
+                            }
+                            case 2 -> {
+                                System.out.println("Gia cu = " + electronic.getPrice());
+                                System.out.println("nhap gia can chinh");
+                                double price = Integer.parseInt(sc.nextLine());
+                                electronic.setPrice(price);
+                                System.out.println("gia sau khi chinh  " + electronic.getPrice());
+                            }
                         }
-                        case 2 -> {
-                            System.out.println("Gia cu = " + electronic.getPrice());
-                            System.out.println("nhap gia can chinh");
-                            double price = Integer.parseInt(sc.nextLine());
-                            electronic.setPrice(price);
-                            System.out.println("gia sau khi chinh  " + electronic.getPrice());
-                        }
+                    } catch (NumberFormatException | NullPointerException e) {
+                        System.out.println("nhập vào đê ");
                     }
                 } while (index != 3);
                 temp++;
@@ -107,7 +111,7 @@ public class ListProducts {
                         System.out.println("Tên này không có trong danh sách\n ");
                     }
                 }
-            } catch (Exception e) {
+            } catch (NullPointerException | NumberFormatException e) {
                 System.out.println("Nhâp vào đê ");
             }
         } while (n != 2);
