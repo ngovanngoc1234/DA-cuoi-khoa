@@ -35,11 +35,11 @@ public class ListProducts {
         int amount = Integer.parseInt(sc.nextLine());
         e.setSumAmount(amount);
         itemArrayList.add(e);
+
     }
 
-
     public void showProducts() {
-        for (Electronic e:itemArrayList) {
+        for (Electronic e : itemArrayList) {
             System.out.println(e.toString());
         }
     }

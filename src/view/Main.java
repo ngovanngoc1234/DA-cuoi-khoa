@@ -7,13 +7,13 @@ import model.Electronic;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ListProducts listProducts = new ListProducts();
         Cart cart = new Cart();
         int input = 9;
         do {
+
             System.out.println(" mời chọn chức năng");
             System.out.println("1: Thêm mới sản phẩm");
             System.out.println("2: xem sản phẩm ");
@@ -35,7 +35,5 @@ public class Main {
                     break;
             }
         } while (input != 5);
-
-
     }
 }
