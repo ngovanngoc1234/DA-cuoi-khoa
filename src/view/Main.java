@@ -28,27 +28,46 @@ public class Main {
                         if (user.getRole() == 0) {
                             int n = 0;
                             do {
+                                ListProducts.showProducts();
                                 System.out.println("Mời chọn chức năng ");
                                 System.out.println("1: Tìm kiếm sản phẩm ");
                                 System.out.println("2: Sắp Xếp giá sản phẩm ");
                                 System.out.println("3: Chọn mua sản phẩm ");
                                 System.out.println("4: xem hóa đơn sản phẩm ");
                                 System.out.println("5: Đánh giá góp ý");
-                                System.out.println("6: Thoát");
-                                listProducts.showProducts();
+                                System.out.println("6: Thông tin tài khoản ");
+                                System.out.println("7: Thoát");
                                 try {
                                     n = Integer.parseInt(sc.nextLine());
                                     switch (n) {
                                         case 1 -> listProducts.searchProducts();
-                                        case 2 -> listProducts.showProducts();
+                                        case 2 -> listProducts.sortByPrice();
                                         case 3 -> cart.addToCart();
                                         case 4 -> cart.show();
                                         case 5 -> Comments.comments();
+                                        case 6 -> {
+                                            int number = 0;
+                                            do {
+                                                System.out.println("chọn chức năng ");
+                                                System.out.println("1: xem thông tin tài khoản ");
+                                                System.out.println("2: chỉnh sửa thông tin người dùng ");
+                                                System.out.println("3: thoát");
+                                                try {
+                                                    number = Integer.parseInt(sc.nextLine());
+                                                    switch (number) {
+                                                        case 1 -> listUser.showUser();
+                                                        case 2 -> listUser.editPassWord();
+                                                    }
+                                                } catch (NullPointerException | NumberFormatException e) {
+                                                    System.out.println("nhập lại đi ");
+                                                }
+                                            } while (number != 3);
+                                        }
                                     }
                                 } catch (NumberFormatException | NullPointerException e) {
                                     System.out.println("mời nhập lại ");
                                 }
-                            } while (n != 6);
+                            } while (n != 7);
                         } else if (user.getRole() == 1) {
                             int n = 0;
                             do {
@@ -66,7 +85,7 @@ public class Main {
                                         case 1 -> listProducts.addProducts();
                                         case 2 -> listProducts.searchProducts();
                                         case 3 -> listProducts.editWare();
-                                        case 4 -> listProducts.showProducts();
+                                        case 4 -> ListProducts.showProducts();
                                         case 5 -> {
                                             int number = 0;
                                             do {

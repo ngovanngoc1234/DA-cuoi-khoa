@@ -74,6 +74,38 @@ public class ListUser {
         }
     }
 
+    public void editPassWord() {
+        int n = 0;
+        do {
+            System.out.println("chọn chức năng ");
+            System.out.println("1: Đổi password ");
+            System.out.println("2: Thoát ");
+            try {
+                n = Integer.parseInt(sc.nextLine());
+                if (n == 1) {
+                    System.out.println("Nhập lại password cũ ");
+                    String pass = sc.nextLine();
+                    for (User user : userArrayList) {
+                        if (pass.equals(user.getPassword())) {
+                            System.out.println("Nhập password mới ");
+                            String password = sc.nextLine();
+                            System.out.println("Xác Nhận Lại password ");
+                            String passwords = sc.nextLine();
+                            if (password.equals(passwords)) {
+                                user.setPassword(passwords);
+                            } else {
+                                System.out.println("Xác Nhận password sai ");
+                            }
+                        }
+                    }
+                }
+            }catch (NumberFormatException|NullPointerException e) {
+                System.out.println("nhập lại đi ");
+            }
+        } while (n != 3);
+
+    }
+
     public void deleter() {
         System.out.println("nhập thông tin người dùng cần xóa");
         String name = sc.nextLine();
