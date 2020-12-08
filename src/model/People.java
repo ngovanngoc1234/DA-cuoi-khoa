@@ -1,6 +1,8 @@
 package model;
 
-public class People {
+import java.io.Serializable;
+
+public class People implements Serializable {
     private String name;
     private int age;
     private String numberPhone;

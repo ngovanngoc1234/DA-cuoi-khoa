@@ -1,6 +1,8 @@
 package model;
 
-public class Products extends Item {
+import java.io.Serializable;
+
+public class Products extends Item implements Serializable {
     private String productCode;
     private int sumAmount;
     private int amount;

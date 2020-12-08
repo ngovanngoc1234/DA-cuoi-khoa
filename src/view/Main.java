@@ -17,6 +17,10 @@ public class Main {
         ListUser listUser = new ListUser();
         int cases = 0;
         do {
+            Comments.readFile();
+            Comments.writeToFile();
+            listProducts.readFile();
+            listProducts.writeToFile();
             System.out.println("1: Đăng Nhập ");
             System.out.println("2: Đăng Ký ");
             System.out.println("3: exit");
@@ -28,7 +32,7 @@ public class Main {
                         if (user.getRole() == 0) {
                             int n = 0;
                             do {
-                                ListProducts.showProducts();
+                                listProducts.showProducts();
                                 System.out.println("Mời chọn chức năng ");
                                 System.out.println("1: Tìm kiếm sản phẩm ");
                                 System.out.println("2: Sắp Xếp giá sản phẩm ");
@@ -44,8 +48,11 @@ public class Main {
                                         case 2 -> listProducts.sortByPrice();
                                         case 3 -> cart.addToCart();
                                         case 4 -> cart.show();
-                                        case 5 -> Comments.comments();
+                                        case 5 -> {
+                                            Comments.comments();
+                                        }
                                         case 6 -> {
+
                                             int number = 0;
                                             do {
                                                 System.out.println("chọn chức năng ");
@@ -85,7 +92,7 @@ public class Main {
                                         case 1 -> listProducts.addProducts();
                                         case 2 -> listProducts.searchProducts();
                                         case 3 -> listProducts.editWare();
-                                        case 4 -> ListProducts.showProducts();
+                                        case 4 -> listProducts.showProducts();
                                         case 5 -> {
                                             int number = 0;
                                             do {
@@ -106,7 +113,9 @@ public class Main {
                                                 }
                                             } while (number != 4);
                                         }
-                                        case 6 -> Comments.showCMT();
+                                        case 6 -> {
+                                            Comments.showCMT();
+                                        }
                                     }
                                 } catch (NullPointerException | NumberFormatException e) {
                                     System.out.println("nhập lại đê ");

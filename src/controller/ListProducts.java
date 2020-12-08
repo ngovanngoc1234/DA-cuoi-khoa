@@ -2,7 +2,9 @@ package controller;
 
 import model.Products;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,11 +17,36 @@ public class ListProducts {
         itemArrayList = new ArrayList<>();
     }
 
+    public static void setItemArrayList(ArrayList<Products> itemArrayList) {
+        ListProducts.itemArrayList = itemArrayList;
+    }
+
     public static ArrayList<Products> getItemArrayList() {
         return itemArrayList;
     }
 
-    public void addProducts() {
+
+    public  ArrayList<Products> readFile() throws IOException, ClassNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream("sanpham.dat");
+        ObjectInputStream ojb = new ObjectInputStream(fileInputStream);
+        setItemArrayList((ArrayList<Products>) (ojb.readObject()));
+        ojb.close();
+        fileInputStream.close();
+        return getItemArrayList();
+    }
+
+
+    public void writeToFile() throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream("sanpham.dat");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(getItemArrayList());
+        objectOutputStream.close();
+        fileOutputStream.close();
+    }
+
+
+    public void addProducts() throws IOException, ClassNotFoundException {
+        setItemArrayList(readFile());
         Products e = new Products();
         System.out.println("Nhập mã sản phẩm ");
         String m = sc.nextLine();
@@ -117,17 +144,19 @@ public class ListProducts {
         } while (n != 2);
     }
 
-
-    public void sortByPrice() {
+    public void sortByPrice() throws IOException, ClassNotFoundException {
+        writeToFile();
+        readFile();
         itemArrayList.sort(new SortByPrice());
         for (int i = 0; i < itemArrayList.size(); i++) {
-            System.out.println("Sản phẩm được sắp xếp theo giá "+itemArrayList.get(i).toString());
+            System.out.println("Sản phẩm được sắp xếp theo giá " + itemArrayList.get(i).toString());
         }
 
     }
 
-
-    public static void showProducts() {
+    public void showProducts() throws IOException, ClassNotFoundException {
+        writeToFile();
+        readFile();
         getItemArrayList().sort(new SortProductsByName());
         for (int i = 0; i < itemArrayList.size(); i++) {
             System.out.println("STT " + i + "  " + itemArrayList.get(i));
