@@ -6,7 +6,7 @@ import model.Products;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cart {
+public class Cart implements CartController{
     Scanner sc = new Scanner(System.in);
     private ArrayList<Products> electronicArrayList;
     private static double sumPayments;
@@ -17,6 +17,8 @@ public class Cart {
     }
 
 
+
+    @Override
     public void addToCart() {
         System.out.println("Nhập tên sản phẩm cần mua ");
         String input = sc.nextLine();
@@ -73,6 +75,8 @@ public class Cart {
         }
     }
 
+
+    @Override
     public void show() {
         for (Products e : electronicArrayList) {
             System.out.println(e.toString() + "\n" + "số lượng mua " + e.getAmount());

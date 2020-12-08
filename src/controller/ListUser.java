@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ListUser {
+public class ListUser implements UserController{
     Scanner sc = new Scanner(System.in);
     private static ArrayList<User> userArrayList = new ArrayList<>();
 
-    public User checkUser() throws IOException, ClassNotFoundException {
+    @Override
+    public User checkUser() {
         User user = null;
         User user1 = new User("admin", "ngoc", User.ADMIN_ROLE);
         User users = new User("user", "ngovanngoc", User.USER_ROLE);
@@ -36,7 +37,7 @@ public class ListUser {
     }
 
 
-    public void addInfos() throws IOException, ClassNotFoundException {
+    public void addInfos() {
         //doc file gan vao bien list user
         int number = 0;
         do {
@@ -68,13 +69,15 @@ public class ListUser {
         //ghi vao file
     }
 
-    public void showUser() {
+    @Override
+    public void show() {
         for (User u : userArrayList) {
             System.out.println(u.toString());
         }
     }
 
-    public void editPassWord() {
+    @Override
+    public void edit() {
         int n = 0;
         do {
             System.out.println("chọn chức năng ");
@@ -106,6 +109,7 @@ public class ListUser {
 
     }
 
+    @Override
     public void deleter() {
         System.out.println("nhập thông tin người dùng cần xóa");
         String name = sc.nextLine();

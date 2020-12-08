@@ -19,7 +19,7 @@ public class Main {
         do {
             Comments.readFile();
             Comments.writeToFile();
-            listProducts.readFile();
+            listProducts.readDataFromFile();
             listProducts.writeToFile();
             System.out.println("1: Đăng Nhập ");
             System.out.println("2: Đăng Ký ");
@@ -62,8 +62,8 @@ public class Main {
                                                 try {
                                                     number = Integer.parseInt(sc.nextLine());
                                                     switch (number) {
-                                                        case 1 -> listUser.showUser();
-                                                        case 2 -> listUser.editPassWord();
+                                                        case 1 -> listUser.show();
+                                                        case 2 -> listUser.edit();
                                                     }
                                                 } catch (NullPointerException | NumberFormatException e) {
                                                     System.out.println("nhập lại đi ");
@@ -104,7 +104,7 @@ public class Main {
                                                 try {
                                                     number = Integer.parseInt(sc.nextLine());
                                                     switch (number) {
-                                                        case 1 -> listUser.showUser();
+                                                        case 1 -> listUser.show();
                                                         case 2 -> listUser.deleter();
                                                         case 3 -> listUser.addInfos();
                                                     }
