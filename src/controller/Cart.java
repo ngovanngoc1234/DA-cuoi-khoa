@@ -60,6 +60,8 @@ public class Cart {
                     System.out.println("Nhập Địa chỉ ");
                     String address = sc.nextLine();
                     client.setAddress(address);
+                    String code = "HVNCLC";
+                    client.setCodeClient(code + i);
                     ListProducts.itemArrayList.get(i).setClient(client);
                 } catch (NullPointerException | NumberFormatException e) {
                     System.out.println("nhập số cơ mà ");
@@ -75,6 +77,7 @@ public class Cart {
         for (Products e : electronicArrayList) {
             System.out.println(e.toString() + "\n" + "số lượng mua " + e.getAmount());
             System.out.println("Thông tin khách hàng");
+            System.out.println("Mã khách hàng " + e.getClient().getCodeClient());
             System.out.println("Tên Khách hàng : " + e.getClient().getName());
             System.out.println("Số điện thoại khách : " + e.getClient().getNumberPhone());
             System.out.println("Địa chỉ chỉ khách  : " + e.getClient().getAddress());

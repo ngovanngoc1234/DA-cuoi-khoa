@@ -5,8 +5,15 @@ import java.io.Serializable;
 public class Client extends People implements Serializable {
     private String codeClient;
 
-    public Client() {
+    public Client() {}
+
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((codeClient == null) ? 0 : codeClient.hashCode());
+        return result;
     }
+
 
     public Client(String codeClient) {
         this.codeClient = codeClient;

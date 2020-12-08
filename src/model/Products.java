@@ -44,13 +44,6 @@ public class Products extends Item implements Serializable {
         this.amount = amount;
     }
 
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((productCode == null) ? 0 : productCode.hashCode());
-        return result;
-    }
-
     public String getProductCode() {
         return productCode;
     }
