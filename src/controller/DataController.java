@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public interface DataController {
-    <T> void writeToFile()throws IOException;
-    <T> ArrayList<Products> readDataFromFile()throws IOException, ClassNotFoundException ;
+
+    void writeToFile() throws IOException;
+    ArrayList<Products> readDataFromFile() throws IOException, ClassNotFoundException;
 
 }

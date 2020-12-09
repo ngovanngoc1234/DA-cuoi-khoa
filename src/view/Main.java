@@ -17,8 +17,6 @@ public class Main {
         ListUser listUser = new ListUser();
         int cases = 0;
         do {
-            Comments.readFile();
-            Comments.writeToFile();
             listProducts.readDataFromFile();
             listProducts.writeToFile();
             System.out.println("1: Đăng Nhập ");
