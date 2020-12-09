@@ -72,6 +72,7 @@ public class Comments implements Serializable {
         }
     }
 
+
     public static ArrayList<String> parseCsvLine(String csvLine) {
         ArrayList<String> stringArrayList = new ArrayList<>();
         if (csvLine != null) {
@@ -81,11 +82,13 @@ public class Comments implements Serializable {
         return stringArrayList;
     }
 
+
     public static void printCountry(ArrayList<String> country) {
         for (String s : country) {
             System.out.println(s);
         }
     }
+
 
     public static void comments() {
         csvFile();
@@ -94,6 +97,7 @@ public class Comments implements Serializable {
         list.add(cmt);
     }
 
+
     public static void showCMT(){
         csvReader();
         System.out.println("thông tin đánh giá ");
@@ -101,4 +105,5 @@ public class Comments implements Serializable {
             System.out.println(s + "\n");
         }
     }
+
 }

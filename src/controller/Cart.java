@@ -8,10 +8,8 @@ import java.util.Scanner;
 
 public class Cart implements CartController{
     Scanner sc = new Scanner(System.in);
-    private ArrayList<Products> electronicArrayList;
+    private final ArrayList<Products> electronicArrayList;
     private static double sumPayments;
-
-
     public Cart() {
         electronicArrayList = new ArrayList<>();
     }
@@ -38,7 +36,6 @@ public class Cart implements CartController{
                             sum = (electronic.getPrice() * electronic.getAmount()) - electronic.getPayments();
                             electronic.setPayments(sum);
                             sumPayments += electronic.getPayments();
-                            index++;
                         } else {
                             electronicArrayList.add(ListProducts.itemArrayList.get(i));
                             ListProducts.itemArrayList.get(i).setAmount(input1);
@@ -46,8 +43,8 @@ public class Cart implements CartController{
                             ListProducts.itemArrayList.get(i).setPayments(sum);
                             sumPayments += ListProducts.itemArrayList.get(i).getPayments();
                             ListProducts.itemArrayList.get(i).setSumAmount(ListProducts.itemArrayList.get(i).getSumAmount() - input1);
-                            index++;
                         }
+                        index++;
                     } else {
                         System.out.println("Trong kho còn  ^.^ " + ListProducts.itemArrayList.get(i).getSumAmount());
                     }

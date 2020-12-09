@@ -25,6 +25,7 @@ public class ListProducts implements DataController, ProductsController {
     }
 
 
+    @Override
     public ArrayList<Products> readDataFromFile() throws IOException, ClassNotFoundException {
         FileInputStream fileInputStream = new FileInputStream("sanpham.dat");
         ObjectInputStream ojb = new ObjectInputStream(fileInputStream);
@@ -47,18 +48,36 @@ public class ListProducts implements DataController, ProductsController {
     public void addProducts() throws IOException, ClassNotFoundException {
         setItemArrayList(readDataFromFile());
         Products e = new Products();
-        System.out.println("Nhập mã sản phẩm ");
-        String m = sc.nextLine();
-        e.setProductCode(m);
+        boolean check = false;
+        do {
+            System.out.println("Nhập mã sản phẩm ");
+            String m = sc.nextLine();
+            String regex = "^[a-zA-Z]";
+            Pattern pattern = Pattern.compile(m);
+            Matcher matcher = pattern.matcher(regex);
+            if (matcher.find()) {
+                e.setProductCode(m);
+                check = true;
+            } else {
+                System.out.println("mời nhập lại ");
+            }
+        } while (!check);
+
         System.out.println("Nhập tên sản phẩm");
         String name = sc.nextLine();
         e.setProductsName(name);
+
+
         System.out.println("Nhập Nhà sản xuất");
         String nsx = sc.nextLine();
         e.setProducer(nsx);
+
+
         System.out.println("Nhập Giá sản phẩm ");
         double price = Integer.parseInt(sc.nextLine());
         e.setPrice(price);
+
+
         System.out.println("Nhập số lượng sản phẩm");
         int amount = Integer.parseInt(sc.nextLine());
         e.setSumAmount(amount);
@@ -149,8 +168,8 @@ public class ListProducts implements DataController, ProductsController {
         writeToFile();
         readDataFromFile();
         itemArrayList.sort(new SortByPrice());
-        for (int i = 0; i < itemArrayList.size(); i++) {
-            System.out.println("Sản phẩm được sắp xếp theo giá " + itemArrayList.get(i).toString());
+        for (Products products : itemArrayList) {
+            System.out.println("Sản phẩm được sắp xếp theo giá " + products.toString());
         }
 
     }

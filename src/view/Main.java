@@ -50,7 +50,6 @@ public class Main {
                                             Comments.comments();
                                         }
                                         case 6 -> {
-
                                             int number = 0;
                                             do {
                                                 System.out.println("chọn chức năng ");
@@ -107,7 +106,7 @@ public class Main {
                                                         case 3 -> listUser.addInfos();
                                                     }
                                                 } catch (NumberFormatException | NullPointerException e) {
-                                                    System.out.println("nhập lại đi ");
+                                                    System.out.println("nhập lại đi");
                                                 }
                                             } while (number != 4);
                                         }
@@ -116,7 +115,7 @@ public class Main {
                                         }
                                     }
                                 } catch (NullPointerException | NumberFormatException e) {
-                                    System.out.println("nhập lại đê ");
+                                    System.out.println("nhập lại đê");
                                 }
                             } while (n != 7);
                         }
