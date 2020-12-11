@@ -52,7 +52,7 @@ public class ListProducts implements DataController, ProductsController {
         do {
             System.out.println("Nhập mã sản phẩm ");
             String m = sc.nextLine();
-            String regex = "^[a-zA-Z]";
+            String regex = "a-zA-z";
             Pattern pattern = Pattern.compile(m);
             Matcher matcher = pattern.matcher(regex);
             if (matcher.find()) {
