@@ -21,7 +21,8 @@ public class Main {
             listProducts.writeToFile();
             System.out.println("1: Đăng Nhập ");
             System.out.println("2: Đăng Ký ");
-            System.out.println("3: exit");
+            System.out.println("3: Chưa có Tài Khoản ");
+            System.out.println("4: exit");
             try {
                 cases = Integer.parseInt(sc.nextLine());
                 switch (cases) {
@@ -121,10 +122,32 @@ public class Main {
                         }
                     }
                     case 2 -> listUser.addInfos();
+                    case 3 -> {
+                        int num = 9;
+                        do {
+                            System.out.println("Mời chọn chức năng ");
+                            System.out.println("1: Tìm kiếm sản phẩm ");
+                            System.out.println("2: Sắp Xếp giá sản phẩm ");
+                            System.out.println("3: Chọn mua sản phẩm ");
+                            System.out.println("4: xem hóa đơn sản phẩm ");
+                            System.out.println("5: Thoát");
+                            try {
+                                num = Integer.parseInt(sc.nextLine());
+                                switch (num) {
+                                    case 1 -> listProducts.searchProducts();
+                                    case 2 -> listProducts.sortByPrice();
+                                    case 3 -> cart.addToCart();
+                                    case 4 -> cart.show();
+                                }
+                            } catch (NullPointerException | NumberFormatException e) {
+                                System.out.println("nhạp lại ");
+                            }
+                        } while (num != 5);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("mời chọn chức năng ");
             }
-        } while (cases != 3);
+        } while (cases != 4);
     }
 }
