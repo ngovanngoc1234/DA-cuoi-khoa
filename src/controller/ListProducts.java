@@ -93,7 +93,9 @@ public class ListProducts implements DataController, ProductsController {
         int temp = 0;
         for (Products electronic : itemArrayList) {
             if (name.equals(electronic.getProductsName())) {
-                System.out.println(electronic + "\n so luong san pham con " + electronic.getSumAmount());
+                System.out.println(electronic + "\n so luong san pham con " + electronic.toString() +
+                        "\n" + electronic.getSumAmount()
+                );
                 do {
                     System.out.println("Chon chuc nang ");
                     System.out.println("1:Them so luong san pham");

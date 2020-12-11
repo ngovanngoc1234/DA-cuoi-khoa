@@ -28,7 +28,7 @@ public class Cart implements CartController {
                 System.out.println("Nhập số lượng cần mua ");
                 try {
                     int input1 = Integer.parseInt(sc.nextLine());
-                    if (ListProducts.itemArrayList.get(i).getSumAmount() >= input1) {
+                    if (ListProducts.itemArrayList.get(i).getSumAmount() >= input1 & ListProducts.itemArrayList.get(i).getSumAmount() > 0) {
                         if (electronicArrayList.contains(ListProducts.itemArrayList.get(i))) {
                             Products electronic = electronicArrayList.get(electronicArrayList.indexOf(ListProducts.itemArrayList.get(i)));
                             input1 += electronic.getAmount();
@@ -45,23 +45,23 @@ public class Cart implements CartController {
                             ListProducts.itemArrayList.get(i).setSumAmount(ListProducts.itemArrayList.get(i).getSumAmount() - input1);
                         }
                         index++;
+                        Client client = new Client();
+                        System.out.println("Mời nhập thông tin cá nhân ");
+                        System.out.println("Họ Tên ");
+                        String name = sc.nextLine();
+                        client.setName(name);
+                        System.out.println("Nhâp Số Điện Thoại ");
+                        String phone = sc.nextLine();
+                        client.setNumberPhone(phone);
+                        System.out.println("Nhập Địa chỉ ");
+                        String address = sc.nextLine();
+                        client.setAddress(address);
+                        String code = "HVNCLC";
+                        client.setCodeClient(code + i);
+                        ListProducts.itemArrayList.get(i).setClient(client);
                     } else {
-                        System.out.println("Trong kho còn  ^.^ " + ListProducts.itemArrayList.get(i).getSumAmount());
+                        System.out.println("Trong kho đã hết sản phẩm   ^.^ " );
                     }
-                    Client client = new Client();
-                    System.out.println("Mời nhập thông tin cá nhân ");
-                    System.out.println("Họ Tên ");
-                    String name = sc.nextLine();
-                    client.setName(name);
-                    System.out.println("Nhâp Số Điện Thoại ");
-                    String phone = sc.nextLine();
-                    client.setNumberPhone(phone);
-                    System.out.println("Nhập Địa chỉ ");
-                    String address = sc.nextLine();
-                    client.setAddress(address);
-                    String code = "HVNCLC";
-                    client.setCodeClient(code + i);
-                    ListProducts.itemArrayList.get(i).setClient(client);
                 } catch (NullPointerException | NumberFormatException e) {
                     System.out.println("nhập số cơ mà ");
                 }
