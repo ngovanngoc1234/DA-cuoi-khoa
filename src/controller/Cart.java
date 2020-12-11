@@ -6,14 +6,14 @@ import model.Products;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cart implements CartController{
+public class Cart implements CartController {
     Scanner sc = new Scanner(System.in);
     private final ArrayList<Products> electronicArrayList;
     private static double sumPayments;
+
     public Cart() {
         electronicArrayList = new ArrayList<>();
     }
-
 
 
     @Override
@@ -75,6 +75,7 @@ public class Cart implements CartController{
 
     @Override
     public void show() {
+        System.out.println(java.time.LocalDateTime.now() + "\n");
         for (Products e : electronicArrayList) {
             System.out.println(e.toString() + "\n" + "số lượng mua " + e.getAmount());
             System.out.println("Thông tin khách hàng");

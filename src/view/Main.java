@@ -17,8 +17,8 @@ public class Main {
         ListUser listUser = new ListUser();
         int cases = 0;
         do {
-            listProducts.readDataFromFile();
-            listProducts.writeToFile();
+//            listProducts.readDataFromFile();
+//            listProducts.writeToFile();
             System.out.println("1: Đăng Nhập ");
             System.out.println("2: Đăng Ký ");
             System.out.println("3: Chưa có Tài Khoản ");

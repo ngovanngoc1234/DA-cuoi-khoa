@@ -46,22 +46,22 @@ public class ListProducts implements DataController, ProductsController {
 
     @Override
     public void addProducts() throws IOException, ClassNotFoundException {
-        setItemArrayList(readDataFromFile());
+//        setItemArrayList(readDataFromFile());
         Products e = new Products();
-        boolean check = false;
-        do {
-            System.out.println("Nhập mã sản phẩm ");
-            String m = sc.nextLine();
-            String regex = "a-zA-z";
-            Pattern pattern = Pattern.compile(m);
-            Matcher matcher = pattern.matcher(regex);
-            if (matcher.find()) {
-                e.setProductCode(m);
-                check = true;
-            } else {
-                System.out.println("mời nhập lại ");
-            }
-        } while (!check);
+        System.out.println("Nhập mã sản phẩm ");
+        String m = sc.nextLine();
+        e.setProductCode(m);
+//        boolean check = false;
+//        do {
+//            String regex = "";
+//            Pattern pattern = Pattern.compile(m);
+//            Matcher matcher = pattern.matcher(regex);
+//            if (matcher.find()) {
+//                check = true;
+//            } else {
+//                System.out.println("mời nhập lại ");
+//            }
+//        } while (!check);
 
         System.out.println("Nhập tên sản phẩm");
         String name = sc.nextLine();
@@ -165,8 +165,8 @@ public class ListProducts implements DataController, ProductsController {
     }
 
     public void sortByPrice() throws IOException, ClassNotFoundException {
-        writeToFile();
-        readDataFromFile();
+//        writeToFile();
+//        readDataFromFile();
         itemArrayList.sort(new SortByPrice());
         for (Products products : itemArrayList) {
             System.out.println("Sản phẩm được sắp xếp theo giá " + products.toString());
@@ -176,8 +176,8 @@ public class ListProducts implements DataController, ProductsController {
 
     @Override
     public void showProducts() throws IOException, ClassNotFoundException {
-        writeToFile();
-        readDataFromFile();
+//        writeToFile();
+//        readDataFromFile();
         getItemArrayList().sort(new SortProductsByName());
         for (int i = 0; i < itemArrayList.size(); i++) {
             System.out.println("STT " + i + "  " + itemArrayList.get(i));
