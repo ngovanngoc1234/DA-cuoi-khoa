@@ -1,9 +1,9 @@
 package view;
 
-import controller.Cart;
-import controller.Comments;
-import controller.ListProducts;
-import controller.ListUser;
+import service.Cart;
+import service.Comments;
+import service.ListProducts;
+import service.ListUser;
 import model.User;
 
 import java.io.IOException;

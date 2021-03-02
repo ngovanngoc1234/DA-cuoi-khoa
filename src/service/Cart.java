@@ -1,12 +1,13 @@
-package controller;
+package service;
 
 import model.Client;
 import model.Products;
+import repository.ICart;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cart implements CartController {
+public class Cart implements ICart {
     Scanner sc = new Scanner(System.in);
     private final ArrayList<Products> electronicArrayList;
     private static double sumPayments;

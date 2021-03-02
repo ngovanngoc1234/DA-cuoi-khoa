@@ -1,6 +1,8 @@
-package controller;
+package service;
 
 import model.Products;
+import repository.IDataProduct;
+import repository.IProductRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ListProducts implements DataController, ProductsController {
+public class ListProducts implements IDataProduct, IProductRepository {
     Scanner sc = new Scanner(System.in);
     public static ArrayList<Products> itemArrayList;
 
@@ -51,17 +53,6 @@ public class ListProducts implements DataController, ProductsController {
         System.out.println("Nhập mã sản phẩm ");
         String m = sc.nextLine();
         e.setProductCode(m);
-//        boolean check = false;
-//        do {
-//            String regex = "";
-//            Pattern pattern = Pattern.compile(m);
-//            Matcher matcher = pattern.matcher(regex);
-//            if (matcher.find()) {
-//                check = true;
-//            } else {
-//                System.out.println("mời nhập lại ");
-//            }
-//        } while (!check);
 
         System.out.println("Nhập tên sản phẩm");
         String name = sc.nextLine();
@@ -93,8 +84,8 @@ public class ListProducts implements DataController, ProductsController {
         int temp = 0;
         for (Products electronic : itemArrayList) {
             if (name.equals(electronic.getProductsName())) {
-                System.out.println(electronic + "\n so luong san pham con " + electronic.toString() +
-                        "\n" + electronic.getSumAmount()
+                System.out.println("\n so luong san pham con " + electronic.getSumAmount() +
+                        "\n" + electronic.toString()
                 );
                 do {
                     System.out.println("Chon chuc nang ");
@@ -126,9 +117,9 @@ public class ListProducts implements DataController, ProductsController {
                 } while (index != 3);
                 temp++;
             }
-            if (temp == 0) {
-                System.out.println(" san pham chua co trong kho ");
-            }
+        }
+        if (temp == 0) {
+            System.out.println(" san pham chua co trong kho ");
         }
     }
 

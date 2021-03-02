@@ -1,12 +1,12 @@
-package controller;
+package service;
 
 import model.User;
+import repository.IUserRepository;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ListUser implements UserController{
+public class ListUser implements IUserRepository {
     Scanner sc = new Scanner(System.in);
     private static ArrayList<User> userArrayList = new ArrayList<>();
 

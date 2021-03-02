@@ -1,8 +1,8 @@
-package controller;
+package repository;
 
 import model.User;
 
-public interface UserController {
+public interface IUserRepository {
     void addInfos();
     void show();
     void edit();
